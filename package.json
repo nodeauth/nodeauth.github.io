@@ -1,0 +1,26 @@
+{
+  "name": "wiki.nodeauth.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "npx vitepress dev docs --port 35173",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --port 35173"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodeauth/nodeauth.github.io.git"
+  },
+  "keywords": [],
+  "author": "nodeauth",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/nodeauth/nodeauth.github.io/issues"
+  },
+  "homepage": "https://github.com/nodeauth/nodeauth.github.io#readme",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

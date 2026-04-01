@@ -8,9 +8,9 @@ dev-dist/
 .vite/
 **/.vite/
 .pwa-assets/
-.vitepress/dist/
-.vitepress/cache/
-.vitepress/ssr-cache/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+docs/.vitepress/ssr-cache/
 
 # 2. Environment & Secrets (STRICT - DO NOT COMMIT)
 .env

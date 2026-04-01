@@ -7,7 +7,7 @@ const zhThemeConfig = {
         { text: '🏠 首页', link: '/' },
         { text: '🛠️ 部署教程', link: '/deploy/index' },
         { text: '📱 PWA指南', link: '/pwa/' },
-        { text: '📥 搬家迁移', link: '/data/import' },
+        { text: '📥 数据迁移', link: '/data/import' },
         { text: '☁️ 云端备份', link: '/data/backup' }
     ],
 
@@ -37,7 +37,7 @@ const zhThemeConfig = {
             link: '/pwa/'
         },
         {
-            text: '📥 搬家迁移',
+            text: '📥 数据迁移',
             items: [
                 { text: '全平台数据导入', link: '/data/import' }
             ]

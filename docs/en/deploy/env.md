@@ -108,6 +108,22 @@ While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the d
 
 ---
 
+## 📦 Automatic Cloud Backup Configuration (Optional)
+For detailed configuration steps, please refer to the [Cloud Backup Guide](../data/backup).
+
+If you have already configured Google login, some variables can be reused, but the **Redirect URI** must use a backup-specific path.
+
+| Cloud Drive | Client ID Variable | Client Secret Variable | Backup Redirect URI Variable |
+| :--- | :--- | :--- | :--- |
+| **Google** | `OAUTH_GOOGLE_CLIENT_ID` | `OAUTH_GOOGLE_CLIENT_SECRET` | `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` |
+| **OneDrive** | `OAUTH_MICROSOFT_CLIENT_ID` | `OAUTH_MICROSOFT_CLIENT_SECRET` | `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` |
+| **Dropbox** | `OAUTH_DROPBOX_CLIENT_ID` | `OAUTH_DROPBOX_CLIENT_SECRET` | `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` |
+| **Baidu** | `OAUTH_BAIDU_CLIENT_ID` | `OAUTH_BAIDU_CLIENT_SECRET` | `OAUTH_BAIDU_BACKUP_REDIRECT_URI` |
+
+*Note: Backup Redirect URIs follow the format `https://your-domain.com/api/backups/oauth/[platform]/callback`*
+
+---
+
 ## 🗄️ Database Engine Configuration (Docker / Private Hosting Only)
 
 If you use Cloudflare Workers deployment, the system will automatically use the D1 database, and **no configuration** of the following variables is necessary.

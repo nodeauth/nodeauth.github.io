@@ -130,6 +130,22 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 
 ---
 
+## 📦 云端自动备份配置 (可选)
+详细配置流程请参考 [云端备份设置指南](../data/backup)。
+
+如果您已配置了 Google 登录，部分变量可以通用，但**回调地址 (Redirect URI)** 必须使用备份专用路径。
+
+| 网盘平台 | 客户端 ID 变量 | 客户端密钥 变量 | 备份专用回调地址变量 |
+| :--- | :--- | :--- | :--- |
+| **Google** | `OAUTH_GOOGLE_CLIENT_ID` | `OAUTH_GOOGLE_CLIENT_SECRET` | `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` |
+| **OneDrive** | `OAUTH_MICROSOFT_CLIENT_ID` | `OAUTH_MICROSOFT_CLIENT_SECRET` | `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` |
+| **Dropbox** | `OAUTH_DROPBOX_CLIENT_ID` | `OAUTH_DROPBOX_CLIENT_SECRET` | `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` |
+| **Baidu** | `OAUTH_BAIDU_CLIENT_ID` | `OAUTH_BAIDU_CLIENT_SECRET` | `OAUTH_BAIDU_BACKUP_REDIRECT_URI` |
+
+*注：回调地址统一格式为 `https://您的域名/api/backups/oauth/[平台名]/callback`*
+
+---
+
 ## ⚙️ 其他可选配置
 
 | 变量名 | 默认值 | 说明 |

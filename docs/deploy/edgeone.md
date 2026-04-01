@@ -13,7 +13,7 @@ Tencent Cloud EdgeOne 是腾讯云提供的边缘计算平台。由于 NodeAuth 
 将项目打包后的 `dist/index.js` 代码内容粘贴到 EdgeOne 的在线编辑器中。
 
 ### 3. 设置环境变量
-在函数的“配置建议”或“环境变量”选项卡中，添加必备参数（同 [环境变量配置手册](./env-vars)）：
+在函数的“配置建议”或“环境变量”选项卡中，添加必备参数（同 [环境变量配置手册](./env)）：
 *   `ENCRYPTION_KEY`
 *   `JWT_SECRET`
 *   `OAUTH_ALLOWED_USERS`

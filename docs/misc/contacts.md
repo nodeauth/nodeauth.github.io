@@ -1,4 +1,4 @@
-# 关于作者与路线图
+# 联系作者与路线图
 
 NodeAuth 的成长离不开社区用户的反馈与支持。
 
@@ -8,7 +8,7 @@ NodeAuth 的成长离不开社区用户的反馈与支持。
 如果您在使用过程中遇到问题、发现漏洞或有功能改进建议：
 *   **GitHub Issues**：[NodeAuth 仓库](https://github.com/nodeauth/nodeauth-worker) (推荐)。
 *   **Telegram 讨论组**：[NodeAuth Group](https://t.me/NodeauthGroup)。
-*   **应急恢复包**：请参考 [./recovery.md](./recovery.md) 了解如何使用包含加密密钥的 PDF 文件进行账户恢复。
+*   **应急恢复包**：请参考 [应急恢复指南](../recovery/index.md) 了解如何使用包含加密密钥的 PDF 文件进行账户恢复。
 
 ## 🗺️ 开发路线图 (Roadmap)
 我们计划在未来的版本中加入以下特性：

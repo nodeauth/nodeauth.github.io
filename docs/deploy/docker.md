@@ -42,15 +42,16 @@ mkdir -p data && sudo chown -R 1000:1000 data
 ## 🚀 快速开始
 
 ### 1. 获取模板
-我们已为您准备好了四种典型的 `docker-compose.yml` 模板，请根据您的选择下载并重命名为 `docker-compose.yml`：
+我们已为您准备好了五种典型的 `docker-compose.yml` 模板。请根据您的选择下载，并将其重命名为 `docker-compose.yml`：
 
+*   [SQLite 极简版 (推荐)](https://github.com/nodeauth/nodeauth-worker/blob/main/docker-compose.yml)：无需安装数据库，一键启动。
 *   [MySQL 本地容器版](https://github.com/nodeauth/nodeauth-worker/blob/main/docker-compose-mysql-local.yml)
 *   [MySQL 远程连接版](https://github.com/nodeauth/nodeauth-worker/blob/main/docker-compose-mysql-remote.yml)
 *   [PostgreSQL 本地版](https://github.com/nodeauth/nodeauth-worker/blob/main/docker-compose-postgresql-local.yml)
 *   [PostgreSQL 远程版](https://github.com/nodeauth/nodeauth-worker/blob/main/docker-compose-postgresql-remote.yml)
 
 ### 2. 配置环境变量
-请参考另一篇详细的 [环境变量配置手册](./env-vars.md) 来正确填写您的 `ENCRYPTION_KEY`, `JWT_SECRET` 以及登录渠道。
+请参考另一篇详细的 [环境变量配置指南](./env.md) 来正确修改 `docker-compose.yml` 文件里预留的环境变量。
 
 ### 3. 启动应用
 ```bash

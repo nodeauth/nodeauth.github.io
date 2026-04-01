@@ -1,4 +1,4 @@
-# 环境变量配置手册
+# 环境变量配置指南
 
 不论您使用哪种部署方式，都需要配置以下核心环境变量。这些变量直接决定了系统的安全性与功能可用性。
 
@@ -37,6 +37,12 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
    *   `OAUTH_GITHUB_CLIENT_SECRET`
    *   `OAUTH_GITHUB_REDIRECT_URI`: `https://您的域名/oauth/callback`
 
+<details>
+<summary>点击查看：Github OAuth 配置示意图</summary>
+<img width="600" alt="Github OAuth 配置示意" src="/deploy/aa03b15f-deb2-4e48-bf4b-e57be342adbb.png" />
+</details>
+
+
 ### 2. Google
 1. 前往 [Google Cloud Console](https://console.cloud.google.com/)，创建一个新项目。
 2. 导航至 **API & Services** -> **OAuth consent screen**，完成基础设置。
@@ -72,6 +78,13 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
    *   `OAUTH_CLOUDFLARE_CLIENT_SECRET`
    *   `OAUTH_CLOUDFLARE_REDIRECT_URI`: `https://您的域名/oauth/callback`
    *   `OAUTH_CLOUDFLARE_ORG_DOMAIN`: 您的团队域名（如 `example.cloudflareaccess.com`）
+
+<details>
+<summary>点击查看：Cloudflare Access OAuth 配置示意图</summary>
+<img height="500" src="/deploy/1e315f8f-1932-4c90-a2d7-0edf8049529f.png" />
+<img height="400" src="/deploy/c6101ee8-f3c3-44f6-9286-f17865f8fb10.png" />
+</details>
+
 
 ### 5. Gitee
 1. 访问 Gitee [第三方应用设置](https://gitee.com/oauth/applications) -> **创建应用**。

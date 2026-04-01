@@ -10,7 +10,7 @@ hero:
       link: https://demo.nodeauth.io
     - theme: alt
       text: 开始部署
-      link: /deploy/env-vars
+      link: /deploy/index
     - theme: alt
       text: 源码仓库
       link: https://github.com/nodeauth/nodeauth-worker

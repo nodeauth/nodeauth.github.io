@@ -1,4 +1,4 @@
-# 云端自动备份设置 (Backup Setup)
+# 云端自动备份设置
 
 实现异地冗余备份是防止极端风险的最后一道防线。NodeAuth 支持多通道自动同步，确保您的 2FA 资产在任何情况下都能“一键回血”。
 
@@ -42,7 +42,10 @@ NodeAuth 通过官方 OAuth 2.0 协议深度适配了主流网盘，点击“授
     1. 访问 [Google Cloud Console](https://console.cloud.google.com/) 创建项目并启用 `Google Drive API`。
     2. 在“OAuth 同意屏幕”添加范围：`https://www.googleapis.com/auth/drive.file`。
     3. 创建“OAuth 客户端 ID” (Web 应用程序)，设置重定向 URI：`https://您的域名/api/backups/oauth/google/callback`。
-    4. 变量：`OAUTH_GOOGLE_CLIENT_ID`, `OAUTH_GOOGLE_CLIENT_SECRET`。
+    4. 变量：
+        *   `OAUTH_GOOGLE_CLIENT_ID`
+        *   `OAUTH_GOOGLE_CLIENT_SECRET`
+        *   `OAUTH_GOOGLE_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/google/callback`
 
 ### 🔼 Microsoft OneDrive
 *   **极高稳定性**：利用 Microsoft Graph API 分片上传，支持大容量备份。
@@ -50,7 +53,10 @@ NodeAuth 通过官方 OAuth 2.0 协议深度适配了主流网盘，点击“授
     1. 访问 [Azure 应用注册](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 注册应用（支持个人账户）。
     2. “重定向 URI” 选 Web 并填入：`https://您的域名/api/backups/oauth/microsoft/callback`。
     3. “API 权限”添加 `Files.ReadWrite.AppFolder` 和 `offline_access` 并授予确认。
-    4. 变量：`OAUTH_MICROSOFT_CLIENT_ID`, `OAUTH_MICROSOFT_CLIENT_SECRET`。
+    4. 变量：
+        *   `OAUTH_MICROSOFT_CLIENT_ID`
+        *   `OAUTH_MICROSOFT_CLIENT_SECRET`
+        *   `OAUTH_MICROSOFT_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/microsoft/callback`
 
 ### 🔼 百度网盘 (Baidu Netdisk)
 *   **国内友好**：特别为中国大陆用户适配，通过官方认证保障。
@@ -58,7 +64,10 @@ NodeAuth 通过官方 OAuth 2.0 协议深度适配了主流网盘，点击“授
     1. 访问 [百度开放平台控制台](https://pan.baidu.com/union/console/applist) 创建“软硬一体”应用。
     2. “安全设置”中填入回调地址：`https://您的域名/api/backups/oauth/baidu/callback`。
     3. 开通“网盘基础服务”权限。
-    4. 变量：`OAUTH_BAIDU_CLIENT_ID` (AppKey), `OAUTH_BAIDU_CLIENT_SECRET` (SecretKey)。
+    4. 变量：
+        *   `OAUTH_BAIDU_CLIENT_ID` (AppKey)
+        *   `OAUTH_BAIDU_CLIENT_SECRET` (SecretKey)
+        *   `OAUTH_BAIDU_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/baidu/callback`
 
 ### 🔼 Dropbox
 *   **极简体验**：API 响应快，适合追求极致速度的用户。
@@ -66,7 +75,10 @@ NodeAuth 通过官方 OAuth 2.0 协议深度适配了主流网盘，点击“授
     1. 访问 [Dropbox App Console](https://www.dropbox.com/developers/apps) 选择 `Scoped access` -> `App folder`。
     2. 在 `Redirect URIs` 填入：`https://您的域名/api/backups/oauth/dropbox/callback`。
     3. `Permissions` 勾选 `files.content.write`, `files.content.read`, `files.metadata.read`。
-    4. 变量：`OAUTH_DROPBOX_CLIENT_ID` (App key), `OAUTH_DROPBOX_CLIENT_SECRET` (App secret)。
+    4. 变量：
+        *   `OAUTH_DROPBOX_CLIENT_ID` (App key)
+        *   `OAUTH_DROPBOX_CLIENT_SECRET` (App secret)
+        *   `OAUTH_DROPBOX_BACKUP_REDIRECT_URI` : `https://您的域名/api/backups/oauth/dropbox/callback`
 
 ---
 
@@ -84,6 +96,6 @@ NodeAuth 通过官方 OAuth 2.0 协议深度适配了主流网盘，点击“授
 *   **保留份数控制**：可设置保留最近 N 份备份，系统会自动清理物理过期旧副本。
 
 > [!TIP]
-> **异地容灾提取**：如果您从云端（如 Telegram 或 S3）下载了加密备份文件，但由于某种原因无法访问 NodeAuth 实例，请参考 [离线解密指南](../security/recovery-kit#进阶-手动离线解密-decrypt_backup-js) 使用脚本进行脱机数据提取。
+> **异地容灾提取**：如果您从云端（如 Telegram 或 S3）下载了加密备份文件，但由于某种原因无法访问 NodeAuth 实例，请参考 [离线解密指南](../recovery/index.md#进阶-手动离线解密-decrypt_backup-js) 使用脚本进行脱机数据提取。
 
 <!-- [📸 UI截图提示：此处展示包含多维度备份源（S3/Email/TG/网盘）的配置列表全景图] -->

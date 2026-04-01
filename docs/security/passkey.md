@@ -1,4 +1,4 @@
-# 通行密钥 (Passkey) 管理
+# 通行密钥
 
 通行密钥是 FIDO2 标准下的硬件级认证。它通过生物识别（指纹、面容）或物理 Security Key 解锁您的 NodeAuth 账号。
 

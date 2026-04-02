@@ -42,30 +42,7 @@ You must configure at least one third-party login method; otherwise, you will no
 <img width="600" alt="GitHub OAuth Configuration Mockup" src="/deploy/aa03b15f-deb2-4e48-bf4b-e57be342adbb.png" />
 </details>
 
-### 2. Google
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/) and create a new project.
-2. Navigate to **API & Services** -> **OAuth consent screen** and complete the basic setup.
-3. Navigate to **Credentials** -> **Create Credentials** -> **OAuth client ID**.
-4. Choose application type: **Web application**.
-5. **Authorized redirect URIs**: `https://your-domain.com/oauth/callback`
-6. **Fill in Environment Variables**:
-   *   `OAUTH_GOOGLE_CLIENT_ID`
-   *   `OAUTH_GOOGLE_CLIENT_SECRET`
-   *   `OAUTH_GOOGLE_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
-
-### 3. Telegram
-While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the domain via BotFather:
-1. Search for and add the official bot **[@BotFather](https://t.me/BotFather)** on Telegram, send `/newbot` to create a bot.
-2. Record the generated **Token** (`OAUTH_TELEGRAM_BOT_TOKEN`) and **Username** (`OAUTH_TELEGRAM_BOT_NAME`).
-3. Send the `/setdomain` command to @BotFather, select your bot, and enter your **application domain** (e.g., `nodeauth.pages.dev`, without https).
-4. **Critical Step (Register Webhook)**:
-   Replace `<Token>` and `<domain>` in the following link and visit it once in your browser:
-   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<domain>/api/telegram/webhook`
-5. **Fill in Environment Variables**:
-   *   `OAUTH_TELEGRAM_BOT_NAME`
-   *   `OAUTH_TELEGRAM_BOT_TOKEN`
-
-### 4. Cloudflare Access (Zero Trust)
+### 2. Cloudflare Access (Zero Trust)
 1. Go to **Cloudflare Zero Trust Dashboard** -> **Access** -> **Applications**.
 2. Click **Add an Application** -> select **SaaS**.
 3. **Application name**: `nodeauth`
@@ -80,9 +57,35 @@ While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the d
 
 <details>
 <summary>Click to view: Cloudflare Access OAuth Configuration Mockup</summary>
-<img height="500" src="/deploy/1e315f8f-1932-4c90-a2d7-0edf8049529f.png" />
-<img height="400" src="/deploy/c6101ee8-f3c3-44f6-9286-f17865f8fb10.png" />
+<img height="250" src="/deploy/c6101ee8-f3c3-44f6-9286-f17865f8fb10.png" /><br />
+<img height="300" src="/deploy/5ad539ec-1f0a-4141-be31-88f676c8011a.png" /><br />
+<img height="300" src="/deploy/e4b00a92-9eb6-44a3-8819-b34e4dff2107.png" /><br />
+<img height="500" src="/deploy/1e315f8f-1932-4c90-a2d7-0edf8049529f.png" /><br />
+<img height="200" src="/deploy/c35b3083-96f1-46de-aa98-ae1b5bda0c78.png" />
 </details>
+
+### 3. Google
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/) and create a new project.
+2. Navigate to **API & Services** -> **OAuth consent screen** and complete the basic setup.
+3. Navigate to **Credentials** -> **Create Credentials** -> **OAuth client ID**.
+4. Choose application type: **Web application**.
+5. **Authorized redirect URIs**: `https://your-domain.com/oauth/callback`
+6. **Fill in Environment Variables**:
+   *   `OAUTH_GOOGLE_CLIENT_ID`
+   *   `OAUTH_GOOGLE_CLIENT_SECRET`
+   *   `OAUTH_GOOGLE_REDIRECT_URI`: `https://your-domain.com/oauth/callback`
+
+### 4. Telegram
+While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the domain via BotFather:
+1. Search for and add the official bot **[@BotFather](https://t.me/BotFather)** on Telegram, send `/newbot` to create a bot.
+2. Record the generated **Token** (`OAUTH_TELEGRAM_BOT_TOKEN`) and **Username** (`OAUTH_TELEGRAM_BOT_NAME`).
+3. Send the `/setdomain` command to @BotFather, select your bot, and enter your **application domain** (e.g., `nodeauth.pages.dev`, without https).
+4. **Critical Step (Register Webhook)**:
+   Replace `<Token>` and `<domain>` in the following link and visit it once in your browser:
+   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<domain>/api/telegram/webhook`
+5. **Fill in Environment Variables**:
+   *   `OAUTH_TELEGRAM_BOT_NAME`
+   *   `OAUTH_TELEGRAM_BOT_TOKEN`
 
 ### 5. Gitee
 1. Visit Gitee [Third-party Application Settings](https://gitee.com/oauth/applications) -> **Create Application**.
@@ -124,7 +127,7 @@ If you have already configured Google login, some variables can be reused, but t
 
 ---
 
-## 🗄️ Database Engine Configuration (Docker / Private Hosting Only)
+## 🗄️ Database Engine Configuration (Only for Docker Deployment)
 
 If you use Cloudflare Workers deployment, the system will automatically use the D1 database, and **no configuration** of the following variables is necessary.
 

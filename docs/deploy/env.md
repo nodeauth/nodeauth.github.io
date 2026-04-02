@@ -42,31 +42,7 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 <img width="600" alt="Github OAuth 配置示意" src="/deploy/aa03b15f-deb2-4e48-bf4b-e57be342adbb.png" />
 </details>
 
-
-### 2. Google
-1. 前往 [Google Cloud Console](https://console.cloud.google.com/)，创建一个新项目。
-2. 导航至 **API & Services** -> **OAuth consent screen**，完成基础设置。
-3. 导航至 **Credentials** -> **Create Credentials** -> **OAuth client ID**。
-4. 应用类型选择：**Web application**。
-5. **Authorized redirect URIs**: `https://您的域名/oauth/callback`
-6. **填入环境变量**：
-   *   `OAUTH_GOOGLE_CLIENT_ID`
-   *   `OAUTH_GOOGLE_CLIENT_SECRET`
-   *   `OAUTH_GOOGLE_REDIRECT_URI`: `https://您的域名/oauth/callback`
-
-### 3. Telegram
-虽然 Telegram 无需 `REDIRECT_URI` 变量，但需要通过 BotFather 绑定域名：
-1. 在 Telegram 搜索并添加官方机器人 **[@BotFather](https://t.me/BotFather)**，发送 `/newbot` 创建机器人。
-2. 记录生成的 **Token** (`OAUTH_TELEGRAM_BOT_TOKEN`) 和 **用户名** (`OAUTH_TELEGRAM_BOT_NAME`)。
-3. 对着 @BotFather 发送 `/setdomain` 指令，选择您的机器人，输入您的**应用域名**（如 `nodeauth.pages.dev`，不含 https）。
-4. **关键步骤 (注册 Webhook)**：
-   将下方链接中的 `<Token>` 和 `<域名>` 替换后，在浏览器中访问一次：
-   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<域名>/api/telegram/webhook`
-5. **填入环境变量**：
-   *   `OAUTH_TELEGRAM_BOT_NAME`
-   *   `OAUTH_TELEGRAM_BOT_TOKEN`
-
-### 4. Cloudflare Access (Zero Trust)
+### 2. Cloudflare Access (Zero Trust)
 1. 进入 **Cloudflare Zero Trust Dashboard** -> **Access** -> **Applications**。
 2. 点击 **Add an Application** -> 选择 **SaaS**。
 3. **Application name**: `nodeauth`
@@ -81,10 +57,35 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 
 <details>
 <summary>点击查看：Cloudflare Access OAuth 配置示意图</summary>
-<img height="500" src="/deploy/1e315f8f-1932-4c90-a2d7-0edf8049529f.png" />
-<img height="400" src="/deploy/c6101ee8-f3c3-44f6-9286-f17865f8fb10.png" />
+<img height="250" src="/deploy/c6101ee8-f3c3-44f6-9286-f17865f8fb10.png" /><br />
+<img height="300" src="/deploy/5ad539ec-1f0a-4141-be31-88f676c8011a.png" /><br />
+<img height="300" src="/deploy/e4b00a92-9eb6-44a3-8819-b34e4dff2107.png" /><br />
+<img height="500" src="/deploy/1e315f8f-1932-4c90-a2d7-0edf8049529f.png" /><br />
+<img height="200" src="/deploy/c35b3083-96f1-46de-aa98-ae1b5bda0c78.png" />
 </details>
 
+### 3. Google
+1. 前往 [Google Cloud Console](https://console.cloud.google.com/)，创建一个新项目。
+2. 导航至 **API & Services** -> **OAuth consent screen**，完成基础设置。
+3. 导航至 **Credentials** -> **Create Credentials** -> **OAuth client ID**。
+4. 应用类型选择：**Web application**。
+5. **Authorized redirect URIs**: `https://您的域名/oauth/callback`
+6. **填入环境变量**：
+   *   `OAUTH_GOOGLE_CLIENT_ID`
+   *   `OAUTH_GOOGLE_CLIENT_SECRET`
+   *   `OAUTH_GOOGLE_REDIRECT_URI`: `https://您的域名/oauth/callback`
+
+### 4. Telegram
+虽然 Telegram 无需 `REDIRECT_URI` 变量，但需要通过 BotFather 绑定域名：
+1. 在 Telegram 搜索并添加官方机器人 **[@BotFather](https://t.me/BotFather)**，发送 `/newbot` 创建机器人。
+2. 记录生成的 **Token** (`OAUTH_TELEGRAM_BOT_TOKEN`) 和 **用户名** (`OAUTH_TELEGRAM_BOT_NAME`)。
+3. 对着 @BotFather 发送 `/setdomain` 指令，选择您的机器人，输入您的**应用域名**（如 `nodeauth.pages.dev`，不含 https）。
+4. **关键步骤 (注册 Webhook)**：
+   将下方链接中的 `<Token>` 和 `<域名>` 替换后，在浏览器中访问一次：
+   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<域名>/api/telegram/webhook`
+5. **填入环境变量**：
+   *   `OAUTH_TELEGRAM_BOT_NAME`
+   *   `OAUTH_TELEGRAM_BOT_TOKEN`
 
 ### 5. Gitee
 1. 访问 Gitee [第三方应用设置](https://gitee.com/oauth/applications) -> **创建应用**。
@@ -110,7 +111,7 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 
 ---
 
-## 🗄️ 数据库引擎配置 (仅限 Docker/私有化部署)
+## 🗄️ 数据库引擎配置 (仅限 Docker 方式部署)
 
 如果您使用 Cloudflare Workers 部署，系统会自动使用 D1 数据库，**无需配置**以下变量。
 

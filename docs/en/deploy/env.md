@@ -8,8 +8,13 @@ These variables are the foundation of the system's operation and **must** be set
 
 | Variable | Required | Description & Recommendation |
 | :--- | :--- | :--- |
-| `ENCRYPTION_KEY` | ✅ | **Core:** Database encryption key. All 2FA seeds are encrypted with this key before being stored. **Do not change after setting**, otherwise old data will be unreadable. |
-| `JWT_SECRET` | ✅ | **Auth:** Used for signing JWT login tokens. High-strength random string required. |
+| `ENCRYPTION_KEY` | ✅ | **Core:** Secret for database encryption. All 2FA seeds are encrypted before storage. **Do not change once set**. Minimum 32-bit random string required. |
+| `JWT_SECRET` | ✅ | **Login:** Used for JWT token signing. High-strength 64-bit random string recommended (**Base64/Hex obfuscation suggested**). |
+
+> [!CAUTION]
+> **Warning**: Modifying `ENCRYPTION_KEY` will render all existing 2FA data unreadable. Ensure a full backup is completed before making any changes.
+
+---
 
 ---
 
@@ -153,6 +158,38 @@ If you are deploying on Docker or your own server:
 | :--- | :--- | :--- |
 | `LOG_LEVEL` | `info` | Log level: `debug`, `info`, `warn`, `error` |
 | `PORT` | `3000` | (Docker only) Backend listening port |
+
+## 🛡️ Config Hardening (Optional)
+
+For ultimate security, NodeAuth supports **Prefix Transformation**, allowing sensitive information (such as API keys and database passwords) to be stored as **encrypted ciphertext** in configuration files.
+
+### Why use this?
+Even if your `docker-compose.yml` or environment variable file is accidentally leaked, third parties cannot directly read the actual plaintext credentials, building a solid defense-in-depth line.
+
+### 🔐 Security Tiers
+
+Depending on the nature of the variables, the system provides two levels of security logic:
+
+| Security Tier | Variables | Handling (Prefix) | Description |
+| :--- | :--- | :--- | :--- |
+| **⭐ Obfuscation** | `JWT_SECRET` | `base64:`, `hex:` | Root anchor for session signing. Supports basic encoding-level obfuscation. |
+| **🛡️ Encryption** | All other variables | `base64:`, `hex:`, `aes:` | All sensitive variables are protected with high-strength encryption. **`aes:`** is highly recommended. |
+
+### 🛠️ Quick Start (3 Steps)
+
+1. **Open Tool**: Visit the official **[NodeAuth Deploy Helper (tools.nodeauth.io)](https://tools.nodeauth.io)**.
+2. **Generate & Encrypt**:
+   *   Generate a 64-bit random string for your `JWT_SECRET`.
+   *   Paste your secrets into the "AES Encryptor" box, provide your root key, and execute.
+3. **Apply to File**: Copy the entire generated lines (**including the `aes:` or `base64:` prefix**) and replace the values in your config file.
+
+**Example:**
+```yaml
+# Example snippet
+JWT_SECRET=base64:MjAyNjA0MDJfTm9kZUF1dGhfUm9...
+OAUTH_GOOGLE_CLIENT_ID=aes:iv:tag:cipher_text_here...
+ENCRYPTION_KEY=aes:iv:tag:cipher_text_here...
+```
 
 > [!CAUTION]
 > **Warning**: Modifying `ENCRYPTION_KEY` will cause verification code calculation errors or decryption failures for all stored accounts. Do not change it arbitrarily until backups are completed.

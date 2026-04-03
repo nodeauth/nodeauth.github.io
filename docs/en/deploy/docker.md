@@ -61,6 +61,29 @@ Once started, access `http://server-ip:3000` (or your custom port) to enter.
 
 ---
 
+## 🛡️ Advanced Security Practice (Recommended)
+
+Storing plaintext secrets directly in `docker-compose.yml` increases the risk of physical exposure. We recommend the following hardening strategy:
+
+```yaml
+# Example: Configuration fragment with multi-layer hardening
+environment:
+  # L1 Obfuscation (Anchor)
+  - JWT_SECRET=base64:MjAyNjA0MDJfTm9kZUF1dGhf...
+
+  # L2 Application Layer Encryption
+  - ENCRYPTION_KEY=aes:iv:tag:cipher...
+  - OAUTH_GOOGLE_CLIENT_ID=aes:iv:tag:cipher...
+  - OAUTH_GOOGLE_CLIENT_SECRET=aes:iv:tag:cipher...
+```
+
+> **Tip**: These entries can be generated in bulk using the **[Deploy Helper](https://tools.nodeauth.io)**.
+
+> [!NOTE]
+> **Recovery Guarantee**: Regardless of how your environment variables are encrypted, the **Recovery Packet (PDF)** generated during installation will always display the final decrypted secrets (plaintext) for your emergency use.
+
+---
+
 ## 🛠️ Operations & Troubleshooting
 
 *   **Permission Denied**: 99% of startup failures are caused by missing the `chown 1000:1000` command.

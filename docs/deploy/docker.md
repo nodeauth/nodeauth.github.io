@@ -59,6 +59,31 @@ docker compose up -d
 ```
 启动后，访问 `http://服务器IP:3000` (或您在模板中自定义的端口) 即可进入。
 
+## 🛡️ 高级安全实践 (推荐)
+
+在生产环境中，直接在 `docker-compose.yml` 暴露明文 Secret 会增加物理泄露的风险。除 `JWT_SECRET` 外，其他变量建议采用如下 `aes` 加密加固策略：
+
+```yaml
+# 示例：加密后的环境变量片段
+
+environment:
+  # 支持 base64: hex: 前缀
+  - JWT_SECRET=base64:MjAyNjA0MDJfTm9kZUF1dGhf...
+
+  # 支持 aes: base64: hex: 前缀, 推荐使用 aes: 前缀
+  - ENCRYPTION_KEY=aes:iv:tag:cipher...
+  - OAUTH_GOOGLE_CLIENT_ID=aes:iv:tag:cipher...
+  - OAUTH_GOOGLE_CLIENT_SECRET=aes:iv:tag:cipher...
+
+```
+
+> **提示**：此类格式的配置条目可以通过 **[部署助手](https://tools.nodeauth.io)** 一键批量生成。
+
+> [!NOTE]
+> **关于应急恢复**：无论您在 `docker-compose.yml` 中如何加密，NodeAuth 在成功启动后为您生成的「应急恢复包 (PDF)」中始终会显示**解密后的明文密钥**。请务必妥善保存该 PDF 物理副本。
+
+---
+
 ---
 
 ## 🛠️ 运维与排查

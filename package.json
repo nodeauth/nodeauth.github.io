@@ -22,5 +22,8 @@
   "homepage": "https://github.com/nodeauth/nodeauth.github.io#readme",
   "devDependencies": {
     "vitepress": "^1.6.4"
+  },
+  "overrides": {
+    "esbuild": "0.27.5"
   }
 }

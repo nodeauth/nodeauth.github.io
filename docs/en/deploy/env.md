@@ -86,11 +86,12 @@ While Telegram doesn't require a `REDIRECT_URI` variable, you need to bind the d
 2. Record the generated **Token** (`OAUTH_TELEGRAM_BOT_TOKEN`) and **Username** (`OAUTH_TELEGRAM_BOT_NAME`).
 3. Send the `/setdomain` command to @BotFather, select your bot, and enter your **application domain** (e.g., `nodeauth.pages.dev`, without https).
 4. **Critical Step (Register Webhook)**:
-   Replace `<Token>` and `<domain>` in the following link and visit it once in your browser:
-   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<domain>/api/telegram/webhook`
+   Replace `<Token>`, `<domain>`, and `<Secret>` (at least 32 characters) in the following link and visit it once in your browser:
+   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<domain>/api/telegram/webhook&secret_token=<Secret>`
 5. **Fill in Environment Variables**:
    *   `OAUTH_TELEGRAM_BOT_NAME`
    *   `OAUTH_TELEGRAM_BOT_TOKEN`
+   *   `OAUTH_TELEGRAM_WEBHOOK_SECRET`: The `<Secret>` string you set above. [Get a high-strength random string](https://tools.nodeauth.io)
 
 ### 5. Gitee
 1. Visit Gitee [Third-party Application Settings](https://gitee.com/oauth/applications) -> **Create Application**.

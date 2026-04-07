@@ -84,11 +84,12 @@ NodeAuth 拒绝公开注册，必须预设允许进入的用户。
 2. 记录生成的 **Token** (`OAUTH_TELEGRAM_BOT_TOKEN`) 和 **用户名** (`OAUTH_TELEGRAM_BOT_NAME`)。
 3. 对着 @BotFather 发送 `/setdomain` 指令，选择您的机器人，输入您的**应用域名**（如 `nodeauth.pages.dev`，不含 https）。
 4. **关键步骤 (注册 Webhook)**：
-   将下方链接中的 `<Token>` 和 `<域名>` 替换后，在浏览器中访问一次：
-   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<域名>/api/telegram/webhook`
+   将下方链接中的 `<Token>`、`<域名>` 和 `<Secret>`（32位以上随机字符串）替换后，在浏览器中访问一次：
+   `https://api.telegram.org/bot<Token>/setWebhook?url=https://<域名>/api/telegram/webhook&secret_token=<Secret>`
 5. **填入环境变量**：
    *   `OAUTH_TELEGRAM_BOT_NAME`
    *   `OAUTH_TELEGRAM_BOT_TOKEN`
+   *   `OAUTH_TELEGRAM_WEBHOOK_SECRET`: 您在上面设置的 `<Secret>` 字符串。[获取高强度随机字符串](https://tools.nodeauth.io)
 
 ### 5. Gitee
 1. 访问 Gitee [第三方应用设置](https://gitee.com/oauth/applications) -> **创建应用**。

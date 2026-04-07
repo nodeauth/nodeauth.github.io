@@ -25,6 +25,27 @@ The Telegram Bot-based backup method is both real-time and visually intuitive:
 3. **Access Key / Secret Key**: API access credentials.
 4. **Region**: Enter the corresponding region (e.g., `auto`).
 
+## 🐙 Configure GitHub (Version Control Aficionados)
+Utilize a private GitHub repository to save encrypted backup data, supporting full version control history (Git-based).
+1. Create a **Private Repository** to store backups on GitHub (e.g., `nodeauth-backup`).
+2. Go to **Settings** -> **Developer settings** -> **Personal access tokens** -> **Tokens (classic)**.
+3. Click "Generate new token (classic)", set an appropriate expiration, and strictly **check the `repo` scope** (gives full control of private repositories).
+4. Save and copy the generated **Personal Access Token**.
+
+<details>
+<summary>Click to view: Steps to get Personal Access Token</summary> 
+<img height="200" src="/data/794ac8c0-9915-4bcd-9e52-eb39d368652a.png" /><br />
+<img height="50" src="/data/8b4d5391-8e46-4af7-b5e3-42de5abc8f64.png" /><br />
+<img height="50" src="/data/ceefe88f-9520-45f4-a0a4-acc9ebd10728.png" />
+</details>
+
+5. In NodeAuth, fill in respectively:
+   * **Personal Access Token** (the key you just copied)
+   * **Repository Owner** (your GitHub username)
+   * **Repository Name** (the newly created private repo name)
+   * **Branch Name** (e.g., `main` or `master`)
+   * **Save Directory** (the path to store in the cloud, e.g., `/`)
+
 ## ☁️ Configure WebDAV (Private Cloud Users)
 Suitable for Synology, QNAP, Nutstore, or Alist users:
 1. **URL**: Your WebDAV mount point address.

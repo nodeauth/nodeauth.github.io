@@ -25,6 +25,27 @@
 3. **Access Key / Secret Key**: API 访问凭证。
 4. **Region**: 填写对应的区域（如 `auto`）。
 
+## 🐙 配置 GitHub (代码托管控)
+利用 GitHub 的私有仓库来保存加密备份数据，支持完整的历史版本控制（基于 Git）。
+1. 在 GitHub 上创建一个**私有仓库** (Private Repository，如 `nodeauth-backup`)。
+2. 前往 **Settings** -> **Developer settings** -> **Personal access tokens** -> **Tokens (classic)**。
+3. 点击 Generate new token (classic)，设置适宜的过期时间，并在权限下**严格勾选 `repo`**（拥有完整控制私有仓库的权限）。
+4. 保存并复制生成的 **Personal Access Token**。
+
+<details>
+<summary>点击查看：获取 Personal Access Token 步骤</summary> 
+<img height="200" src="/data/794ac8c0-9915-4bcd-9e52-eb39d368652a.png" /><br />
+<img height="50" src="/data/8b4d5391-8e46-4af7-b5e3-42de5abc8f64.png" /><br />
+<img height="50" src="/data/ceefe88f-9520-45f4-a0a4-acc9ebd10728.png" />
+</details>
+
+5. 在 NodeAuth 中分别填入：
+   * **Personal Access Token** (刚刚复制的密钥)
+   * **仓库所有者** (您的 GitHub 用户名)
+   * **仓库名称** (新建的私有仓库名)
+   * **分支名** (如 `main` 或 `master`)
+   * **保存目录** (指定云端存放的路径，如 `/`)
+
 ## ☁️ 配置 WebDAV (私有云用户)
 适用于群晖、威联通、坚果云或 Alist 用户：
 1. **URL**: 您的 WebDAV 挂载点地址。
